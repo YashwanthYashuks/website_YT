@@ -1,0 +1,9 @@
+{% extends "base.html" %}{% block content %}
+<h1>Admin Login</h1>
+<form class="form small" method="post">
+<label>Username<input name="username" required></label>
+<label>Password<input type="password" name="password" required></label>
+<button class="btn" type="submit">Login</button>
+</form>
+<p>Default local credentials: admin / admin123. Change these before production.</p>
+{% endblock %}

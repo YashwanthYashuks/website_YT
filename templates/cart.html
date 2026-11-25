@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<h1>Your Cart</h1>
+{% if rows %}
+<form method="post" action="{{ url_for('update_cart') }}">
+<table><tr><th>Product</th><th>Price</th><th>Qty</th><th>Subtotal</th></tr>
+{% for row in rows %}
+<tr><td>{{ row.product.name }}</td><td>₹{{ "%.2f"|format(row.product.price) }}</td>
+<td><input type="number" min="0" name="qty_{{ row.product.id }}" value="{{ row.quantity }}"></td>
+<td>₹{{ "%.2f"|format(row.subtotal) }}</td></tr>
+{% endfor %}
+</table>
+<button class="btn secondary" type="submit">Update Cart</button>
+</form>
+<h2>Total: ₹{{ "%.2f"|format(total) }}</h2>
+<a class="btn" href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+{% else %}<p>Your cart is empty.</p><a class="btn" href="{{ url_for('home') }}">Shop Products</a>{% endif %}
+{% endblock %}

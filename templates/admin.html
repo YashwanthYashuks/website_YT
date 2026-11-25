@@ -1,0 +1,31 @@
+{% extends "base.html" %}{% block content %}
+<div class="admin-head"><h1>Admin Dashboard</h1><a href="{{ url_for('admin_logout') }}">Logout</a></div>
+<h2>Orders</h2>
+<table><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th><th>Action</th></tr>
+{% for o in orders %}
+<tr>
+<td>{{ o.order_number }}<br><small>{{ o.created_at.strftime("%d-%m-%Y %H:%M") }}</small></td>
+<td>{{ o.customer.name }}<br>{{ o.customer.phone }}<br>{{ o.customer.address }}, {{ o.customer.city }} - {{ o.customer.pincode }}</td>
+<td>{% for i in o.items %}{{ i.product.name }} × {{ i.quantity }}<br>{% endfor %}</td>
+<td>₹{{ "%.2f"|format(o.total_amount) }}</td>
+<td><strong>{{ o.status }}</strong></td>
+<td><form method="post" action="{{ url_for('admin_status', order_id=o.id) }}">
+<select name="status">
+{% for s in ["Order Received","Confirmed","Preparing","Ready","Out for Delivery","Delivered","Cancelled"] %}
+<option {% if s == o.status %}selected{% endif %}>{{ s }}</option>
+{% endfor %}
+</select><button class="btn smallbtn">Update</button></form></td>
+</tr>
+{% else %}<tr><td colspan="6">No orders yet.</td></tr>{% endfor %}
+</table>
+
+<h2>Add Product</h2>
+<form class="form product-form" method="post" action="{{ url_for('admin_product_add') }}">
+<input name="name" placeholder="Product name" required>
+<input name="price" type="number" step="0.01" placeholder="Price" required>
+<input name="category" placeholder="Category" value="Bouquets">
+<input name="image" placeholder="Image filename/URL (optional)">
+<textarea name="description" placeholder="Description"></textarea>
+<button class="btn">Add Product</button>
+</form>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}{% block content %}
+<h1>Track Your Order</h1>
+<form class="form small" method="post">
+<label>Order Number<input name="order_number" placeholder="ORD-20261125-123456" required></label>
+<button class="btn" type="submit">Track</button>
+</form>
+{% if order %}
+<div class="status-box">
+<h2>{{ order.order_number }}</h2>
+<div class="status">{{ order.status }}</div>
+<p>Last updated: {{ order.updated_at.strftime("%d-%m-%Y %I:%M %p") }}</p>
+<p>Total: ₹{{ "%.2f"|format(order.total_amount) }}</p>
+</div>
+{% elif request.method == "POST" %}
+<p class="error">Order not found. Please check the order number.</p>
+{% endif %}
+{% endblock %}

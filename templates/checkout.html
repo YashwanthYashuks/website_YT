@@ -1,0 +1,16 @@
+{% extends "base.html" %}{% block content %}
+<h1>Checkout</h1>
+<form class="form" method="post">
+<label>Full Name *<input name="name" required></label>
+<label>Mobile / WhatsApp Number *<input name="phone" required></label>
+<label>Email<input type="email" name="email"></label>
+<label>Full Delivery Address *<textarea name="address" required></textarea></label>
+<label>City<input name="city" value="Bangalore"></label>
+<label>Pincode<input name="pincode" value="560048"></label>
+<label>Preferred Delivery Date<input type="date" name="delivery_date"></label>
+<label>Special Instructions<textarea name="special_instructions" placeholder="Event date, customization, color preference, etc."></textarea></label>
+<h2>Total: ₹{{ "%.2f"|format(total) }}</h2>
+<p class="note">Payment: Cash/UPI after order confirmation. We will contact you on WhatsApp to confirm the order and payment.</p>
+<button class="btn" type="submit">Place Order</button>
+</form>
+{% endblock %}

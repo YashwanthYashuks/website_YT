@@ -1,0 +1,318 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fff8fb;
+    color: #351b2d;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 6%;
+    background: #6b214f;
+    color: white;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.brand {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.whatsapp {
+    background: #1f9d55 !important;
+    color: white !important;
+    padding: 10px 14px;
+    border-radius: 8px;
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f7d7e8, #fff);
+}
+
+.hero h1 {
+    font-size: 46px;
+    margin: 10px;
+}
+
+.hero p {
+    font-size: 20px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    border: 0;
+    background: #6b214f;
+    color: white;
+    padding: 11px 17px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.btn:hover {
+    background: #8a3268;
+}
+
+.secondary {
+    background: #a35b85;
+}
+
+/* Main content */
+main {
+    max-width: 1150px;
+    margin: auto;
+    padding: 35px 20px;
+    min-height: 70vh;
+}
+
+/* Product grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #0001;
+    overflow: hidden;
+}
+
+.card h3 {
+    margin-top: 15px;
+}
+
+/* Product images */
+.photo {
+    width: 100%;
+    height: 220px;
+    border-radius: 12px;
+    background: #f6dbe9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-size: 70px;
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+/* Large product image */
+.photo.big {
+    height: 400px;
+}
+
+.photo.big img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Product price */
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+/* Bulk order and status sections */
+.bulk,
+.status-box,
+.success {
+    margin: 35px 0;
+    padding: 30px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px #0001;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 20px 0;
+}
+
+th,
+td {
+    border: 1px solid #eadde5;
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d8c4d0;
+    border-radius: 7px;
+    margin-top: 5px;
+}
+
+textarea {
+    min-height: 100px;
+}
+
+.form {
+    display: grid;
+    gap: 15px;
+    max-width: 700px;
+}
+
+.form.small {
+    max-width: 450px;
+}
+
+.product-form {
+    max-width: 700px;
+}
+
+/* Product detail page */
+.product-detail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Order status */
+.status {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6b214f;
+}
+
+/* Admin section */
+.admin-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Messages */
+.flash {
+    background: #d8f3dc;
+    padding: 12px;
+    text-align: center;
+}
+
+.error {
+    color: #a00;
+}
+
+.note {
+    background: #fff3cd;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.smallbtn {
+    padding: 6px 9px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #351b2d;
+    color: white;
+}
+
+footer a {
+    color: white;
+}
+
+/* Mobile responsive design */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        gap: 10px;
+    }
+
+    .hero {
+        padding: 50px 15px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .product-detail {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .photo {
+        height: 200px;
+    }
+
+    .photo.big {
+        height: 250px;
+    }
+
+    table {
+        font-size: 13px;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .bulk,
+    .status-box,
+    .success {
+        padding: 20px;
+    }
+}

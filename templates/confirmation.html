@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block content %}
+<div class="success">
+<h1>🎉 Order Received!</h1>
+<p>Your order number is:</p><h2>{{ order.order_number }}</h2>
+<p>Total: <strong>₹{{ "%.2f"|format(order.total_amount) }}</strong></p>
+<p>We will contact you on WhatsApp to confirm your order.</p>
+<a class="btn" href="{{ url_for('track') }}">Track Your Order</a>
+<a class="btn whatsapp" href="https://wa.me/{{ whatsapp }}?text=Hi%2C%20my%20order%20number%20is%20{{ order.order_number }}" target="_blank">WhatsApp Us</a>
+</div>
+{% endblock %}

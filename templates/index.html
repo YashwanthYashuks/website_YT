@@ -1,0 +1,111 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Beautiful Bouquets & Return Gifts</h1>
+
+    <p>
+        Special gifts for weddings, birthdays, functions and every celebration.
+    </p>
+
+    <a class="btn" href="#products">Shop Now</a>
+</section>
+
+
+<!-- Products Section -->
+<section id="products">
+
+    <h2>Our Products</h2>
+
+    <div class="grid">
+
+        {% for p in products %}
+
+        <div class="card">
+
+            <!-- Product Image -->
+            <div class="photo">
+
+                {% if p.image %}
+                    <img
+                        src="{{ url_for('static', filename='images/' + p.image) }}"
+                        alt="{{ p.name }}"
+                    >
+                {% else %}
+                    🌷
+                {% endif %}
+
+            </div>
+
+            <!-- Product Details -->
+            <h3>{{ p.name }}</h3>
+
+            <p>{{ p.description }}</p>
+
+            <div class="price">
+                ₹{{ "%.2f"|format(p.price) }}
+            </div>
+
+            <!-- View Product Button -->
+            <a
+                class="btn secondary"
+                href="{{ url_for('product', product_id=p.id) }}"
+            >
+                View
+            </a>
+
+            <!-- Add to Cart -->
+            <form method="post" action="{{ url_for('add_to_cart') }}">
+
+                <input
+                    type="hidden"
+                    name="product_id"
+                    value="{{ p.id }}"
+                >
+
+                <input
+                    type="hidden"
+                    name="quantity"
+                    value="1"
+                >
+
+                <button class="btn" type="submit">
+                    Add to Cart
+                </button>
+
+            </form>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+<!-- Bulk Orders Section -->
+<section class="bulk">
+
+    <h2>Bulk Return Gift Orders</h2>
+
+    <p>
+        Need 50, 100, 200+ gifts?
+        Contact us on WhatsApp for custom pricing and designs.
+    </p>
+
+    <a
+        class="btn whatsapp"
+        href="https://wa.me/{{ whatsapp }}?text=Hi%20YT_Boquets_ReturnGifts%2C%20I%20need%20a%20bulk%20return%20gift%20order."
+        target="_blank"
+        rel="noopener noreferrer"
+    >
+        Enquire on WhatsApp
+    </a>
+
+</section>
+
+{% endblock %}
